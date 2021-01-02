@@ -1,79 +1,139 @@
 import React from "react"
-import { Link } from "gatsby"
+import { makeStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Link from './Link';
 import styled from "styled-components"
 
 import { rhythm, scale } from "../utils/typography"
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog/`
-    let header
+const useStyles = makeStyles((theme) => ({
+  toolbar: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    justifyContent: "center"
+  },
+  toolbarTitle: {
+    flex: 1,
+  },
+  toolbarSecondary: {
+    justifyContent: 'space-around',
+    overflowX: 'auto',
+  },
+  toolbarLink: {
+    padding: theme.spacing(1),
+    flexShrink: 0,
+  },
+}));
 
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-      header = (
-        <h1
+export default function Layout(props) {
+  const classes = useStyles();
+  const { location, title, children } = props
+  const rootPath = `${__PATH_PREFIX__}/`
+  const blogPath = `${__PATH_PREFIX__}/blog/`
+  let header
+
+  if (location.pathname === rootPath || location.pathname === blogPath) {
+    header = (
+      <h1
+        style={{
+          ...scale(1),
+          marginBottom: rhythm(0.5),
+          marginTop: rhythm(0.5),
+        }}
+      >
+        <Link
           style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
           }}
+          to={location.pathname === blogPath ? `/blog/` : `/`}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
+          {title}
+        </Link>
+      </h1>
+    )
+  } else {
+    header = (
+      <h3
+        style={{
+          fontFamily: `Montserrat, sans-serif`,
+          marginBottom: rhythm(0.5),
+          marginTop: rhythm(0.5),
+        }}
+      >
+        <Link
           style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
           }}
+          to={`/blog/`}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
-    return (
-      <Wrapper>
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-        >
-          <header>{header}</header>
-          <main>{children}</main>
-        </div>
-        <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
-      </Wrapper>
+          {title}
+        </Link>
+      </h3>
     )
   }
+  return (
+    <Wrapper
+      style={{
+        marginLeft: `auto`,
+        marginRight: `auto`,
+        maxWidth: rhythm(55),
+      }}
+    >
+      <Toolbar className={classes.toolbar}>
+        <header>{header}</header>
+      </Toolbar>
+      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+        <Link
+          color="inherit"
+          noWrap
+          key="Blog"
+          variant="body2"
+          to="/"
+          className={classes.toolbarLink}
+        >
+          Home
+        </Link>
+        <Link
+          color="inherit"
+          noWrap
+          key="Blog"
+          variant="body2"
+          to="/blog/"
+          className={classes.toolbarLink}
+        >
+          Blog
+        </Link>
+        <Link
+            color="inherit"
+            noWrap
+            key="About Me"
+            variant="body2"
+            to="/"
+            className={classes.toolbarLink}
+          >
+            About Me
+          </Link>
+      </Toolbar>
+      <div
+        style={{
+          marginLeft: `auto`,
+          marginRight: `auto`,
+          maxWidth: rhythm(24),
+          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        }}
+      >
+        <main>{children}</main>
+      </div>
+      <Footer>
+        © {new Date().getFullYear()}, Built with
+        {` `}
+        <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </Footer>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`
@@ -84,5 +144,3 @@ const Footer = styled.footer`
   text-align: center;
   margin: 24px;
 `
-
-export default Layout

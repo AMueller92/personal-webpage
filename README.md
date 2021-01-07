@@ -2,7 +2,7 @@
 
 <img alt="screenshot" src="./screenshot.gif">
 
-This is the search-enabled version of Gatsby Personal Starter Blog!
+This is the search-enabled version of Gatsby Personal Starter Index!
 
 ## 🚀 Quick start
 

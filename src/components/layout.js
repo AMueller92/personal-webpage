@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from './Link';
 import styled from "styled-components"
+import Emoji from "react-emoji-render"
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   toolbarSecondary: {
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     overflowX: 'auto',
   },
   toolbarLink: {
@@ -46,7 +47,7 @@ export default function Layout(props) {
             textDecoration: `none`,
             color: `inherit`,
           }}
-          to={location.pathname === blogPath ? `/blog/` : `/`}
+          to='/'
         >
           {title}
         </Link>
@@ -67,7 +68,7 @@ export default function Layout(props) {
             textDecoration: `none`,
             color: `inherit`,
           }}
-          to={`/blog/`}
+          to='/'
         >
           {title}
         </Link>
@@ -89,7 +90,7 @@ export default function Layout(props) {
         <Link
           color="inherit"
           noWrap
-          key="Blog"
+          key="Index"
           variant="body2"
           to="/"
           className={classes.toolbarLink}
@@ -97,21 +98,11 @@ export default function Layout(props) {
           Home
         </Link>
         <Link
-          color="inherit"
-          noWrap
-          key="Blog"
-          variant="body2"
-          to="/blog/"
-          className={classes.toolbarLink}
-        >
-          Blog
-        </Link>
-        <Link
             color="inherit"
             noWrap
             key="About Me"
             variant="body2"
-            to="/"
+            to="/about"
             className={classes.toolbarLink}
           >
             About Me
@@ -130,7 +121,7 @@ export default function Layout(props) {
       <Footer>
         © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <Emoji text=":heart:" />
       </Footer>
     </Wrapper>
   )

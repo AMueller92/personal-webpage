@@ -7,11 +7,10 @@ import Button from "../components/button"
 
 class About extends React.Component {
   render() {
-    const { data, navigate, location } = this.props
-    const siteTitle = data.site.siteMetadata.title
+    const { location } = this.props
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={location}>
         <SEO title="All posts" />
         <p>Wow this is about me</p>
         <Link to="/">
@@ -23,32 +22,3 @@ class About extends React.Component {
 }
 
 export default About
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    localSearchBlog {
-      index
-      store
-    }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
-        }
-      }
-    }
-  }
-`

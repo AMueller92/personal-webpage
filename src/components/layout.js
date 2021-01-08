@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Link from './Link';
 import styled from "styled-components"
 import Emoji from "react-emoji-render"
+import {useStaticQuery, graphql} from "gatsby";
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -27,54 +28,44 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Layout(props) {
   const classes = useStyles();
-  const { location, title, children } = props
-  const rootPath = `${__PATH_PREFIX__}/`
-  const blogPath = `${__PATH_PREFIX__}/blog/`
+  const { children } = props
   let header
 
-  if (location.pathname === rootPath || location.pathname === blogPath) {
-    header = (
-      <h1
+  const data = useStaticQuery(
+    graphql`query {
+      site {
+        siteMetadata {
+         title
+        }
+      }
+    }
+    `
+  )
+
+  const title = data.site.siteMetadata.title
+
+  header = (
+    <h1
+      style={{
+        ...scale(1),
+        marginBottom: rhythm(0.5),
+        marginTop: rhythm(0.5),
+      }}
+    >
+      <Link
         style={{
-          ...scale(1),
-          marginBottom: rhythm(0.5),
-          marginTop: rhythm(0.5),
+          boxShadow: `none`,
+          textDecoration: `none`,
+          color: `inherit`,
         }}
+        to='/'
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to='/'
-        >
-          {title}
-        </Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginBottom: rhythm(0.5),
-          marginTop: rhythm(0.5),
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to='/'
-        >
-          {title}
-        </Link>
-      </h3>
-    )
-  }
+        {title}
+      </Link>
+    </h1>
+  )
+
+
   return (
     <Wrapper
       style={{

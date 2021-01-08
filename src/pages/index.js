@@ -9,12 +9,11 @@ import SearchPosts from "../components/searchPosts"
 class Index extends React.Component {
   render() {
     const { data, navigate, location } = this.props
-    const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
     const localSearchBlog = data.localSearchBlog
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={this.props.location}>
         <SEO title="All posts" />
         <Bio />
         <SearchPosts
@@ -32,11 +31,6 @@ export default Index
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     localSearchBlog {
       index
       store

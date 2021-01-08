@@ -1,11 +1,12 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import Link from "../components/Link"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import {Typography, Grid} from "@material-ui/core";
+
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -30,37 +31,63 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.date}
         </p>
         <MDXRenderer>{post.body}</MDXRenderer>
+        <Typography variant="h6" style={{marginTop: 90}}>More? Well, there you go:</Typography>
         <hr
           style={{
-            marginBottom: rhythm(1),
+            marginBottom: rhythm(0.5),
           }}
         />
-        <Bio />
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
+        <Grid container justify="space-between">
+          <Grid item xs={6} sm={6}>
             {previous && (
-              <Link to={`/blog${previous.fields.slug}`} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
+                <Link
+                  variant="h6"
+                  style={{
+                    boxShadow: `none`,
+                    color: `inherit`,
+                  }}
+                  to={`/blog${previous.fields.slug}`} rel="prev"
+                >
+                  <Grid container justify="flex-start">
+                    <Grid item xs={12} sm={8}>
+                      <Typography variant="body2">← Previous Post</Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={8}>
+
+                      {previous.frontmatter.title}
+
+                    </Grid>
+                  </Grid>
+                </Link>
             )}
-          </li>
-          <li>
+          </Grid>
+          <Grid item xs={6} sm={6}>
             {next && (
-              <Link to={`/blog${next.fields.slug}`} rel="next">
-                {next.frontmatter.title} →
+              <Link
+                    variant="h6"
+                style={{
+                  boxShadow: `none`,
+                  color: `inherit`,
+                  margin: 0,
+                  padding: 0
+                }}
+                to={`/blog${next.fields.slug}`} rel="next"
+              >
+                <Grid container justify="flex-end">
+                  <Grid item container xs={12} justify="flex-end">
+                    <Typography variant="body2">Next Post →</Typography>
+                  </Grid>
+                  <Grid item container xs={12} justify="flex-end">
+
+                      {next.frontmatter.title}
+
+                  </Grid>
+                </Grid>
               </Link>
             )}
-          </li>
-        </ul>
+          </Grid>
+        </Grid>
       </Layout>
     )
   }

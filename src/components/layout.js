@@ -3,30 +3,31 @@ import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from './Link';
 import styled from "styled-components"
-import Emoji from "react-emoji-render"
 import {useStaticQuery, graphql} from "gatsby";
-
 import { rhythm, scale } from "../utils/typography"
+import { Typography } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    justifyContent: "center"
+    justifyContent: "space-evenly",
+    overflowX: 'auto',
   },
   toolbarTitle: {
     flex: 1,
   },
-  toolbarSecondary: {
-    justifyContent: 'space-evenly',
-    overflowX: 'auto',
+  toolbarFooter: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    padding: theme.spacing(1.5, 0, 5, 0),
   },
   toolbarLink: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
     flexShrink: 0,
   },
 }));
 
 export default function Layout(props) {
+  // TODO change layout depending if its viewed on a phone or computer
   const classes = useStyles();
   const { children } = props
   let header
@@ -71,49 +72,49 @@ export default function Layout(props) {
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
-        maxWidth: rhythm(55),
+        maxWidth: rhythm(50),
       }}
     >
       <Toolbar className={classes.toolbar}>
-        <header>{header}</header>
-      </Toolbar>
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
         <Link
-          color="inherit"
+          style={{
+            boxShadow: `none`,
+            color: `inherit`,
+          }}
           noWrap
           key="Index"
-          variant="body2"
+          variant="h6"
           to="/"
           className={classes.toolbarLink}
         >
           Home
         </Link>
+        <header>{header}</header>
         <Link
-            color="inherit"
-            noWrap
-            key="About Me"
-            variant="body2"
-            to="/about"
-            className={classes.toolbarLink}
-          >
-            About Me
-          </Link>
+          style={{
+            boxShadow: `none`,
+            color: `inherit`,
+          }}
+          noWrap
+          key="About"
+          variant="h6"
+          to="/about"
+          className={classes.toolbarLink}
+        >
+          About
+        </Link>
       </Toolbar>
       <div
         style={{
           marginLeft: `auto`,
           marginRight: `auto`,
-          maxWidth: rhythm(24),
+          maxWidth: rhythm(35),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
         <main>{children}</main>
       </div>
-      <Footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <Emoji text=":heart:" />
-      </Footer>
+      <Footer classes={classes} />
     </Wrapper>
   )
 }
@@ -122,7 +123,39 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `
 
-const Footer = styled.footer`
+const Copyright = styled.div`
   text-align: center;
-  margin: 24px;
 `
+const Footer = ({classes}) => (
+  <div className={classes.toolbarFooter}>
+    <Typography variant="caption">
+      <Copyright>
+        © {new Date().getFullYear()}
+        {` `}
+        <Link
+          style={{
+            boxShadow: `none`,
+            color: `inherit`,
+          }}
+          to="/"
+          noWrap
+          key="Home"
+        >
+          alexmueller.tech
+        </Link>
+        {" - "}
+        <Link
+          style={{
+            boxShadow: `none`,
+            color: `inherit`,
+          }}
+          to="/license"
+          noWrap
+          key="License"
+        >
+          License
+        </Link>
+      </Copyright>
+    </Typography>
+  </div>
+)

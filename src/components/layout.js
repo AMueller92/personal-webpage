@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from './Link';
 import styled from "styled-components"
+import Emoji from "react-emoji-render"
+import {useStaticQuery, graphql} from "gatsby";
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -15,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   toolbarSecondary: {
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     overflowX: 'auto',
   },
   toolbarLink: {
@@ -26,54 +28,44 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Layout(props) {
   const classes = useStyles();
-  const { location, title, children } = props
-  const rootPath = `${__PATH_PREFIX__}/`
-  const blogPath = `${__PATH_PREFIX__}/blog/`
+  const { children } = props
   let header
 
-  if (location.pathname === rootPath || location.pathname === blogPath) {
-    header = (
-      <h1
+  const data = useStaticQuery(
+    graphql`query {
+      site {
+        siteMetadata {
+         title
+        }
+      }
+    }
+    `
+  )
+
+  const title = data.site.siteMetadata.title
+
+  header = (
+    <h1
+      style={{
+        ...scale(1),
+        marginBottom: rhythm(0.5),
+        marginTop: rhythm(0.5),
+      }}
+    >
+      <Link
         style={{
-          ...scale(1),
-          marginBottom: rhythm(0.5),
-          marginTop: rhythm(0.5),
+          boxShadow: `none`,
+          textDecoration: `none`,
+          color: `inherit`,
         }}
+        to='/'
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={location.pathname === blogPath ? `/blog/` : `/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginBottom: rhythm(0.5),
-          marginTop: rhythm(0.5),
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/blog/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    )
-  }
+        {title}
+      </Link>
+    </h1>
+  )
+
+
   return (
     <Wrapper
       style={{
@@ -89,7 +81,7 @@ export default function Layout(props) {
         <Link
           color="inherit"
           noWrap
-          key="Blog"
+          key="Index"
           variant="body2"
           to="/"
           className={classes.toolbarLink}
@@ -97,21 +89,11 @@ export default function Layout(props) {
           Home
         </Link>
         <Link
-          color="inherit"
-          noWrap
-          key="Blog"
-          variant="body2"
-          to="/blog/"
-          className={classes.toolbarLink}
-        >
-          Blog
-        </Link>
-        <Link
             color="inherit"
             noWrap
             key="About Me"
             variant="body2"
-            to="/"
+            to="/about"
             className={classes.toolbarLink}
           >
             About Me
@@ -130,7 +112,7 @@ export default function Layout(props) {
       <Footer>
         © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <Emoji text=":heart:" />
       </Footer>
     </Wrapper>
   )

@@ -10,6 +10,8 @@ class License extends React.Component {
   render() {
     const { location } = this.props
 
+    // TODO SEO for every page
+
     return (
       <Layout location={location}>
         <SEO title="All posts" />

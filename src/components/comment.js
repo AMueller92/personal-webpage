@@ -19,11 +19,8 @@ export default class Comment extends Component {
 
   render() {
     return (
-        <div className="comment-box-wrapper container pt-7">
-          <h1 className="mb-0">Comments</h1>
-          <hr className="my-0"/>
+        <div style={{marginTop: 60}}>
           <div ref={this.commentBox} className="comment-box"/>
-          {/* Above element is where the comments are injected */}
         </div>
     );
   }

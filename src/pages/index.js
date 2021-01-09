@@ -12,6 +12,8 @@ class Index extends React.Component {
     const posts = data.allMdx.edges
     const localSearchBlog = data.localSearchBlog
 
+    // TODO SEO for every page
+
     return (
       <Layout location={this.props.location}>
         <SEO title="All posts" />

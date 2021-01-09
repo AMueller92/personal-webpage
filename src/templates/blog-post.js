@@ -1,11 +1,14 @@
 import React from "react"
+import {useEffect} from "react";
 import Link from "../components/Link"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import {Typography, Grid} from "@material-ui/core";
+import Comment from "../components/comment"
 
 
 class BlogPostTemplate extends React.Component {
@@ -88,6 +91,8 @@ class BlogPostTemplate extends React.Component {
             )}
           </Grid>
         </Grid>
+
+        <Comment />
       </Layout>
     )
   }

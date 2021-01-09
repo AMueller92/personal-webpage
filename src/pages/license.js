@@ -24,7 +24,7 @@ class License extends React.Component {
         </h2>
         <a
           rel="license"
-          href="http://creativecommons.org/licenses/by-nc-nd/4.0/"
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
           style={{
             boxShadow: `none`,
             color: `inherit`,
@@ -37,17 +37,30 @@ class License extends React.Component {
           />
         </a>
         <br />
-        This work is licensed under a
+        This blog is distributed under the Creative Commons -
         {" "}
         <a
           rel="license"
-          href="http://creativecommons.org/licenses/by-nc-nd/4.0/"
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
           style={{
-            boxShadow: `none`,
             color: `inherit`,
           }}
         >
           Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>
+        .
+        This means that you can read the blog on anything you like and wherever you like, keep
+        it with you, give it away to friends and colleagues and even publish it on your
+        websites/blogs. However, you should explicitly mention a link to this site
+        {" "}
+        <a
+          rel="license"
+          href="https://alexmueller.tech"
+          style={{
+            color: `inherit`,
+          }}
+        >
+          alexmueller.tech
         </a>
         .
         <Link to="/">

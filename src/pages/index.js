@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchPosts from "../components/searchPosts"
+import { rhythm } from "../utils/typography"
 
 class Index extends React.Component {
   render() {
@@ -12,16 +12,25 @@ class Index extends React.Component {
     const posts = data.allMdx.edges
     const localSearchBlog = data.localSearchBlog
 
+    // TODO SEO for every page
+
     return (
       <Layout location={this.props.location}>
         <SEO title="All posts" />
-        <Bio />
-        <SearchPosts
-          posts={posts}
-          localSearchBlog={localSearchBlog}
-          navigate={navigate}
-          location={location}
-        />
+        <div
+          style={{
+            marginLeft: `auto`,
+            marginRight: `auto`,
+            maxWidth: rhythm(24),
+          }}
+        >
+          <SearchPosts
+            posts={posts}
+            localSearchBlog={localSearchBlog}
+            navigate={navigate}
+            location={location}
+          />
+        </div>
       </Layout>
     )
   }

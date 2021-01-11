@@ -25,7 +25,7 @@ class About extends React.Component {
         >
           <h1>About</h1>
           <h3>Hello there!</h3>
-          <p>As you probably have guessed by the url, my name is Alex.<br/>
+          <p>As you probably have guessed by the url and the title, my name is Alexander or in short Alex.<br/>
           I write about exciting new tech and things I am currently learning about, which most likely have
           to do with coding or e-commerce.</p>
 

@@ -116,13 +116,13 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Alexander Muellers Blog`,
-        short_name: `GatsbyJS`,
+        short_name: `Alex Blog`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
         // edit below
-        icon: `static/gatsby-icon.png`,
+        icon: `static/alex-icon.png`,
       },
     },
     {

@@ -1,9 +1,7 @@
 import React from "react"
-import {graphql, Link} from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Button from "../components/button"
 import { rhythm } from "../utils/typography"
 import Comment from "../components/comment";
 
@@ -25,9 +23,11 @@ class About extends React.Component {
         >
           <h1>About</h1>
           <h3>Hello there!</h3>
-          <p>As you probably have guessed by the url and the title, my name is Alexander or in short Alex.<br/>
-          I write about exciting new tech and things I am currently learning about, which most likely have
-          to do with coding or e-commerce.</p>
+          <p>
+            As you surely guessed from the url and title, my name is Alexander or Alex for short.
+            I write about exciting new technology and things I'm learning, which probably have
+            have to do with programming or e-commerce.
+          </p>
 
           <Comment />
         </div>

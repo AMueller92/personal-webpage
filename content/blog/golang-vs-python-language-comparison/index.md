@@ -1,7 +1,9 @@
 ---
 title: Golang vs Python - Language Comparison
 date: 2021-02-02T17:06:23.608Z
-description: Comparison between Golang and Python
+description: Different languages solve the same problems in different ways. By
+  learning several different approaches, you can help broaden your thinking and
+  avoid getting stuck in a rut.
 ---
 Hey there!
 

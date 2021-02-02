@@ -18,22 +18,24 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <div style={{maxWidth: rhythm(28), marginLeft: "auto", marginRight: "auto"}}>
+          <SEO
+            title={post.frontmatter.title}
+            description={post.frontmatter.description || post.excerpt}
+          />
+          <h1>{post.frontmatter.title}</h1>
+          <p
+            style={{
+              ...scale(-1 / 5),
+              display: `block`,
+              marginBottom: rhythm(1),
+              marginTop: rhythm(-1),
+            }}
+          >
+            {post.frontmatter.date}
+          </p>
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </div>
         <Typography variant="h6" style={{marginTop: 90}}>More? Well, there you go:</Typography>
         <hr
           style={{
@@ -93,6 +95,7 @@ class BlogPostTemplate extends React.Component {
         </Grid>
 
         <Comment />
+
       </Layout>
     )
   }

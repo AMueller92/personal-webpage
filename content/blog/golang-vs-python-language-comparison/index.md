@@ -169,6 +169,6 @@ Because of its philosophy of having only one solution to a problem and because i
 
 ## Takeaway
 
-Truth is, there is no language out there that simply is the best. There can only be a language that is more appropriate in a particular set of circumstances than others. **Talking about Golang vs. Python, with the suggestion there can be a “winner”, is plain wrong.** It is good comparing languages, knowing their strengths and weaknesses, and then go ahead and pull the appropriate language for the task at hand from your tool belt.
+Truth is, there is no language out there that simply is the best. There can only be a language that is more appropriate in a particular set of circumstances than others. **Talking about Golang vs. Python, with the suggestion there can be a 'winner', is plain wrong.** It is good comparing languages, knowing their strengths and weaknesses, and then go ahead and pull the appropriate language for the task at hand from your tool belt.
 
 That’s it for this post and if you find any errors or mistakes I’ve made, I’m happy to read about them in the comments and correct them. Until then, stay healthy!

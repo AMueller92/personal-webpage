@@ -5,8 +5,6 @@ description: Comparison between Golang and Python
 ---
 # Golang vs Python - Language Comparison
 
-<Illustration of Golang vs Python>
-
 Hey there!
 
 In this series of 5 or so upcoming posts, I'll be comparing Golang to Python in various disciplines.

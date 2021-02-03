@@ -157,6 +157,18 @@ const Footer = ({classes}) => (
         >
           License
         </Link>
+        {" - Icons by "}
+        <Link
+          style={{
+            boxShadow: `none`,
+            color: `inherit`,
+          }}
+          to="https://www.icons8.com"
+          noWrap
+          key="License"
+        >
+          icons8.com
+        </Link>
       </Copyright>
     </Typography>
   </div>

@@ -1,5 +1,4 @@
 import React from "react"
-import {useEffect} from "react";
 import Link from "../components/Link"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 

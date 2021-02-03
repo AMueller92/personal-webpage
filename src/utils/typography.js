@@ -4,16 +4,23 @@ import fairyGatesTheme from 'typography-theme-fairy-gates'
 import gray from "gray-percentage"
 
 fairyGatesTheme.overrideThemeStyles = ({ adjustFontSizeTo, scale, rhythm }, options) => {
-    const linkColor = "#407294"
+    const primaryColor = "#05386B"
+    const accentColor = "#FC4445"
     return {
       "a.gatsby-resp-image-link": {
         boxShadow: `none`,
       },
       h1: {
-        color: linkColor,
+        color: primaryColor,
+      },
+      h2: {
+        color: accentColor,
+      },
+      h3: {
+        color: accentColor,
       },
       a: {
-        color: linkColor,
+        color: primaryColor,
         textDecoration: "none",
         textShadow:
           ".03em 0 #fff,-.03em 0 #fff,0 .03em #fff,0 -.03em #fff,.06em 0 #fff,-.06em 0 #fff,.09em 0 #fff,-.09em 0 #fff,.12em 0 #fff,-.12em 0 #fff,.15em 0 #fff,-.15em 0 #fff", // eslint-disable-line
@@ -30,7 +37,7 @@ fairyGatesTheme.overrideThemeStyles = ({ adjustFontSizeTo, scale, rhythm }, opti
       // Blockquote styles.
       blockquote: {
         ...scale(1 / 5),
-        borderLeft: `${rhythm(6 / 16)} solid ${linkColor}`,
+        borderLeft: `${rhythm(6 / 16)} solid ${accentColor}`,
         color: gray(50),
         paddingLeft: rhythm(10 / 16),
         fontStyle: "italic",

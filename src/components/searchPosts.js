@@ -87,7 +87,7 @@ const AllPosts = ({ posts }) => (
               marginBottom: rhythm(1 / 4),
             }}
           >
-            <Link style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
+            <Link style={{ boxShadow: `none`, color: "#05386B" }} to={`/blog${node.fields.slug}`}>
               {title}
             </Link>
           </h3>

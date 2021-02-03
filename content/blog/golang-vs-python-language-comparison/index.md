@@ -5,6 +5,8 @@ description: Different languages solve the same problems in different ways. By
   learning several different approaches, you can help broaden your thinking and
   avoid getting stuck in a rut.
 ---
+![Golang vs. Python](thumbnail_go_vs_py.jpg "Golang vs. Python")
+
 Hey there!
 
 In this series of 5 or so upcoming posts, I'll be comparing Golang to Python in various disciplines.
@@ -112,10 +114,12 @@ In terms of which language pays the most on average, Python is far behind with $
 A quick search revealed the following
 
 Indeed US
+
 * Python Developer = 27683
 * Go + Golang Developer = 4201
 
 Indeed Germany (where I’m from)
+
 * Python Developer + Python Entwickler = 4202
 * (Go + Golang Developer) + (Go + Golang Entwickler) = 1909
 

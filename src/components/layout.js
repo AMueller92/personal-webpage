@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   toolbarLink: {
     padding: theme.spacing(0),
     flexShrink: 0,
+    backgroundImage: "none"
   },
 }));
 
@@ -58,6 +59,7 @@ export default function Layout(props) {
           boxShadow: `none`,
           textDecoration: `none`,
           color: `inherit`,
+          backgroundImage: "none"
         }}
         to='/'
       >
